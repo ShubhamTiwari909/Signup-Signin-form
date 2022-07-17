@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import {auth} from '../firebase'
-import { createUserWithEmailAndPassword,updateProfile } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 const initialState = {
@@ -24,21 +22,6 @@ function Auth() {
 
   const handleAuth = async (e) => {
     e.preventDefault()
-    if (!signup) {
-
-    }
-    else {
-      if (password !== confirmPassword) {
-        alert("Password does not match!!")
-      }
-      if (firstName && lastName && email && password) {
-        const { user } = await createUserWithEmailAndPassword(auth, email, password)
-        await updateProfile(user,{ displayName: `${firstName} ${lastName}` })
-      }
-      else {
-        alert("All fields are required!!")
-      }
-    }
     navigation('/')
   }
   return (
